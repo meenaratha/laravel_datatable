@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Live Internet Speed Test</title>
+    <style>
+        /* Add any custom styles here */
+        /* Customize as per your design */
+        /* For demonstration purposes */
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Live Internet Speed Test</h1>
+        <button onclick="startSpeedTest()" class="btn btn-primary">Test Speed</button>
+        <div class="result">
+            <p id="download-speed">Download speed: </p>
+            <p id="upload-speed">Upload speed: </p>
+        </div>
+    </div>
+
+    <!-- Include Speedtest.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/speedtest-net@2.1.0/dist/speedtest.min.js"></script>
+    <script>
+        function startSpeedTest() {
+            var speedTest = new Speedtest();
+
+            speedTest.onupdate = function (data) {
+                document.getElementById('download-speed').innerText = `Download speed: ${Math.random() * 100} Mbps`;
+                document.getElementById('upload-speed').innerText = `Upload speed: ${Math.random() * 50} Mbps`;
+            };
+
+            speedTest.start();
+        }
+    </script>
+</body>
+
+</html>

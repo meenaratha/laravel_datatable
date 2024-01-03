@@ -1,0 +1,320 @@
+
+body {
+    background-color: #f8f9fa;
+}
+
+.form-container {
+    max-width: 1300px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+    margin-bottom: 10px;
+}
+
+p {
+    background-color: #275bd5;
+    padding: 10px;
+    max-width: 1300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    font-size: 24px;
+    color: #fff;
+}
+
+.checkbox-input {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.checkbox-input input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-input input[type="checkbox"] {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
+}
+
+.button-container .col {
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.input-group {
+position: relative;
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+-ms-flex-align: stretch;
+align-items: stretch;
+width: 90% !important;
+}
+.form-control {
+width: 90%;
+}
+
+
+
+#imageInput {
+display: none;
+}
+
+#previewContainer {
+position: relative;
+
+}
+
+#preview {
+max-width: 200px;
+max-height: 250px;
+border: 1px solid #ddd;
+border-radius: 5px;
+margin-top: 10px;
+}
+
+#uploadLabel {
+padding: 5px 8px;
+background-color: #3498db;
+color: #fff;
+cursor: pointer;
+border-radius: 5px;
+display: inline-block;
+margin-top: 10px;
+
+}
+
+
+.flag-icon1 {
+
+width: 100%;
+height: 100%;
+background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+.flag-icon2, .flag-icon3 {
+
+width: 100%;
+height: 100%;
+background-position: center center;
+background-repeat: no-repeat;
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.iconhidden{
+opacity: 0;
+}
+
+
+img {
+display: block;
+max-width: 100%;
+}
+.img-preview {
+overflow: hidden;
+width: 160px;
+height: 160px;
+margin: 10px;
+border: 1px solid red;
+}
+
+
+
+.image_area {
+position: relative;
+}
+
+img {
+display: block;
+max-width: 100%;
+}
+
+.preview {
+overflow: hidden;
+width: 200px;
+height: 200px;
+margin: 10px;
+border: 1px solid red;
+}
+
+.modal-lg{
+max-width: 1000px !important;
+}
+
+.overlay {
+position: absolute;
+bottom: 10px;
+left: 0;
+right: 0;
+background-color: rgba(255, 255, 255, 0.5);
+overflow: hidden;
+height: 0;
+transition: .5s ease;
+width: 100%;
+}
+
+.image_area:hover .overlay {
+height: 50%;
+cursor: pointer;
+}
+
+.text {
+color: #000;
+font-size: 16px;
+font-weight: 600;
+position: absolute;
+top: 50%;
+left: 50%;
+-webkit-transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+text-align: center;
+}
+#uploaded_image{
+width: 150px;
+height: 150px;
+border-radius: 50%;
+background-color: #f8f9fa;
+}
+.image-cont{
+width: 190px;
+height: 190px;
+
+border-radius: 50%;
+/*background-color: #f8f9fa;*/
+position: relative;
+}
+.sample-img-content{
+width: 100%; /* 100% of the viewport width */
+height: 100%; /* 100% of the viewport height */
+max-width: 500px;
+max-height: 400px;
+overflow: hidden;/* Hide overflow if image is larger than the container */
+position: relative;
+background-color: #f8f9fa;
+/* border: 2px solid gray;*/
+}
+.sample-img-content img {
+max-width: 100%; /* Make the image fill the container width */
+max-height: 100%; /* Make the image fill the container height */
+object-fit: contain; /* Maintain aspect ratio and cover the container */
+display: block; /* Remove extra spacing below the image */
+}
+
+.cropper-bg {
+background-color: #fff !important;
+}
+
+#calendarContainer {
+position: relative;
+}
+
+#calendarIcon {
+cursor: pointer;
+}
+
+#calendarPopup {
+position: absolute;
+top: 30px;
+left: 0;
+display: none;
+background-color: #fff;
+border: 1px solid #ccc;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+z-index: 1000;
+}
+
+.calendar {
+list-style: none;
+padding: 0;
+margin: 0;
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+gap: 4px;
+max-width: 300px;
+}
+
+.calendar li {
+text-align: center;
+padding: 10px;
+box-sizing: border-box;
+cursor: pointer;
+font-size: 1.2em;
+transition: background-color 0.3s;
+}
+
+.calendar li:hover {
+background-color: #f5f5f5;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+.calendar li {
+width: 20%; /* Adjust for smaller screens */
+}
+}
+
+/* Month-specific background colors */
+.january {
+background-color: #ffee58;
+}
+
+.february {
+background-color: #ef5350;
+}
+
+.march {
+background-color: #66bb6a;
+}
+
+.april {
+background-color: #5c6bc0;
+}
+
+.may {
+background-color: #9575cd;
+}
+
+.june {
+background-color: #26a69a;
+}
+
+.july {
+background-color: #ffee58;
+}
+
+.august {
+background-color: #ef5350;
+}
+
+.september {
+background-color: #66bb6a;
+}
+
+.october {
+background-color: #5c6bc0;
+}
+
+.november {
+background-color: #9575cd;
+}
+
+.december {
+background-color: #26a69a;
+}
