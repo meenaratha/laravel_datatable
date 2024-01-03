@@ -16,7 +16,7 @@
 
 <body>
     <div class="container-scroller">
-    <h1 style="font-size: "> git update</h1>
+    <h1 style="font-size: "> git update clone git file</h1>
 
         <!-- partial:../../partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
