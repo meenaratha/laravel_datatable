@@ -30,7 +30,7 @@
                                         <img src="/storage/{{$detail->image}}" class="text-center" alt="profile_image" srcset="" style="height: 120px; width:120px; border-radius:50%; margin-left:43%">
                                     </div>
                                 </div>
-                            </div>   
+                            </div>
                             <form action="/user-image-update" id="imageForm" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
                             <div id="profile-success-message" style="display: none;" class="alert alert-success"></div>
                             <form action="/user-personal-update" method="POST" id="profileForm">
                                 @csrf
@@ -160,10 +160,56 @@
                                             <label for="country">Country</label>
                                             <select name="country" id="country" class="form-control" disabled>
                                                 <option value="{{$detail->country}}">{{$detail->country}}</option>
-                                                @foreach ($counties as $country)
+                                                @foreach ($counties as $country) <!--table name store in $country assign $countries-->
                                                 <option value="{{$country->name}}">{{$country->name}}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="postal_code">Country Code</label>
+                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->country_code}}" name="postal_code" placeholder="Enter Postal Code" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="state">State</label>
+                                            <input type="text" class="form-control" id="state" value="{{$detail->mobile_number}}" name="state" placeholder="Enter State" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="country">Employment Status</label>
+                                            <select name="country" id="country" class="form-control" disabled>
+                                                <option value="{{$detail->employment_status}}">{{$detail->employment_status}}</option>
+                                                {{-- @foreach ($counties as $country)
+                                                <option value="{{$country->name}}">{{$country->name}}</option>
+                                                @endforeach --}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="postal_code">Facebook</label>
+                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->facebook}}" name="postal_code" placeholder="Enter Postal Code" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="state">Twitter</label>
+                                            <input type="text" class="form-control" id="state" value="{{$detail->twitter}}" name="state" placeholder="Enter State" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="country">Linkedin</label>
+                                            <input type="text" class="form-control" id="state" value="{{$detail->linkedin}}" name="state" placeholder="Enter State" required disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -172,6 +218,158 @@
                                 <span id="profileEditButton" class="btn btn-secondary">Edit</span>
                             </form>
                         </div>
+                        <!---employee status-->
+                        <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
+                            <div class="page-header">
+                                <h5 class="page-title">Empolyees Details</h5>
+                            </div>
+                            <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
+                            <form action="/user-bank-update" method="POST" id="bankForm">
+                                @csrf
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_name">Roles</label>
+                                            <input type="text" class="form-control" id="bank_name" value="New User" name="bank_name" placeholder="Enter Bamk Name" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="account_holder">Joining Date</label>
+                                            <input type="text" class="form-control" id="account_holder" value="{{$detail->joining_date}}" name="account_holder" placeholder="Enter Account Holder Name" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="account_number">Designation</label>
+                                            <input type="text" class="form-control" id="account_number" value="{{$detail->designation}}" name="account_number" placeholder="Enter Account Number" required disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="swift_code">Department</label>
+                                            <input type="text" class="form-control" id="swift_code" value="{{$detail->department}}" name="swift_code" placeholder="Enter Bamk Name" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_branch">Staff Postion</label>
+                                            <input type="text" class="form-control" id="bank_branch" value="{{$detail->staff_position}}" name="bank_branch" placeholder="Enter Account Holder Name" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_address1">Salary Grade</label>
+                                            <input type="text" class="form-control" id="bank_address1" value="{{$detail->salary_grade}}" name="bank_address1" placeholder="Enter Salary Grade" required disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_address2">Staff Qualification</label>
+                                            <input type="text" class="form-control" id="bank_address2" value="{{$detail->staff_qualification}}" name="bank_address2" placeholder="Enter Bamk Name" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_city">Stream Type</label>
+                                            <input type="text" class="form-control" id="bank_city" value="{{$detail->stream_type}}" name="bank_city" placeholder="Enter Account Holder Name" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_state">Staff Category</label>
+                                            <input type="text" class="form-control" id="bank_state" value="{{$detail->staff_category}}" name="bank_state" placeholder="Enter Account Number" required disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
+                                <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
+                                <span id="bankEditButton" class="btn btn-secondary">Edit</span>
+                            </form>
+                        </div>
+
+                         <!---login status-->
+                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
+                            <div class="page-header">
+                                <h5 class="page-title">Login Details</h5>
+                            </div>
+                            <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
+                            <form action="/user-bank-update" method="POST" id="bankForm">
+                                @csrf
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_name">User Name</label>
+                                            <input type="text" class="form-control" id="bank_name" value="{{$user->user_name}}" name="bank_name" placeholder="Enter Bamk Name" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="account_number">Email</label>
+                                            <input type="text" class="form-control" id="account_number" value="{{$user->email}}" name="account_number" placeholder="Enter Account Number" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="account_holder">Password</label>
+                                            <input type="password" class="form-control" id="account_holder" value="{{$user->password}}" name="account_holder" placeholder="Enter Account Holder Name" required disabled>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
+                                <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
+                                <span id="bankEditButton" class="btn btn-secondary">Edit</span>
+                            </form>
+                        </div>
+
+                         <!---medical history-->
+                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
+                            <div class="page-header">
+                                <h5 class="page-title">Medical History</h5>
+                            </div>
+                            <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
+                            <form action="/user-bank-update" method="POST" id="bankForm">
+                                @csrf
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_name">Height</label>
+                                            <input type="text" class="form-control" id="bank_name" value="{{$detail->height}}" name="bank_name" placeholder="Enter Bamk Name" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="account_number">Weight</label>
+                                            <input type="text" class="form-control" id="account_number" value="{{$detail->weight}}" name="account_number" placeholder="Enter Account Number" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="account_holder">Allergy</label>
+                                            <input type="password" class="form-control" id="account_holder" value="{{$detail->allergy}}" name="account_holder" placeholder="Enter Account Holder Name" required disabled>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
+                                <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
+                                <span id="bankEditButton" class="btn btn-secondary">Edit</span>
+                            </form>
+                        </div>
+
+
                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
                             <div class="page-header">
                                 <h5 class="page-title">Bank Settings</h5>
@@ -214,49 +412,61 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="bank_address1">Address 1</label>
-                                            <input type="text" class="form-control" id="bank_address1" value="{{$bank->address1}}" name="bank_address1" placeholder="Enter Account Number" required disabled>
+                                            <label for="bank_address1">Bank Address</label>
+                                            <input type="text" class="form-control" id="bank_address1" value="{{$bank->bank_address}}" name="bank_address1" placeholder="Enter Account Number" required disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="bank_address2">Address 2</label>
-                                            <input type="text" class="form-control" id="bank_address2" value="{{$bank->address2}}" name="bank_address2" placeholder="Enter Bamk Name" required disabled>
+                                            <label for="bank_address2">IFSC Code</label>
+                                            <input type="text" class="form-control" id="bank_address2" value="{{$bank->ifsc_code}}" name="bank_address2" placeholder="Enter Bamk Name" required disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="bank_city">City</label>
-                                            <input type="text" class="form-control" id="bank_city" value="{{$bank->city}}" name="bank_city" placeholder="Enter Account Holder Name" required disabled>
+                                            <label for="bank_city">Address 1</label>
+                                            <input type="text" class="form-control" id="bank_city" value="{{$bank->address1}}" name="bank_city" placeholder="Enter Account Holder Name" required disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="bank_state">State</label>
-                                            <input type="text" class="form-control" id="bank_state" value="{{$bank->state}}" name="bank_state" placeholder="Enter Account Number" required disabled>
+                                            <label for="bank_state">Address 2</label>
+                                            <input type="text" class="form-control" id="bank_state" value="{{$bank->address2}}" name="bank_state" placeholder="Enter Account Number" required disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="bank_postal_code">Postal Code</label>
-                                            <input type="text" class="form-control" id="bank_postal_code" value="{{$bank->postal_code}}" name="bank_postal_code" placeholder="Enter Bamk Name" required disabled>
+                                            <label for="bank_address2">City</label>
+                                            <input type="text" class="form-control" id="bank_address2" value="{{$bank->city}}" name="bank_address2" placeholder="Enter Bamk Name" required disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="bank_country">Country</label>
-                                            <select name="bank_country" id="" class="form-control" disabled>
-                                                <option value="{{$bank->country}}">{{$bank->country}}</option>
-                                                @foreach ($counties as $country)
-                                                <option value="{{$country->name}}" >{{$country->name}}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="bank_city">State</label>
+                                            <input type="text" class="form-control" id="bank_city" value="{{$bank->state}}" name="bank_city" placeholder="Enter Account Holder Name" required disabled>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_state">Postel Code</label>
+                                            <input type="text" class="form-control" id="bank_state" value="{{$bank->postal_code}}" name="bank_state" placeholder="Enter Account Number" required disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="bank_postal_code">Country</label>
+                                            <input type="text" class="form-control" id="bank_postal_code" value="{{$bank->country}}" name="bank_postal_code" placeholder="Enter Bamk Name" required disabled>
+                                        </div>
+
+                                    </div>
+
                                 </div>
                                 <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
                                 <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
@@ -264,6 +474,8 @@
                             </form>
                         </div>
                     </div>
+
+
                     <div class="modal fade" id="cropModal" tabindex="-1" role="dialog" aria-labelledby="cropModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
@@ -367,7 +579,7 @@
         <script>
             $(document).ready(function() {
                 $('#profileForm').submit(function(e) {
-                    e.preventDefault(); 
+                    e.preventDefault();
                     var formData = $(this).serialize();
                     $.ajax({
                         type: 'POST',
@@ -390,7 +602,7 @@
         <script>
             $(document).ready(function() {
                 $('#bankForm').submit(function(e) {
-                    e.preventDefault(); 
+                    e.preventDefault();
                     var formData = $(this).serialize();
                     $.ajax({
                         type: 'POST',

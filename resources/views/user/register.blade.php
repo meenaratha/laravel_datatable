@@ -117,7 +117,7 @@
 
                     </span>
                 </div>
-                <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Enter your Date Of Birth">
+                <input type="date" class="form-control" name="date_of_birth" id="date_of_birth" placeholder="Enter your Date Of Birth">
             </div>
             @error('date_of_birth')
             <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px; font-weight:500; paddding-left:5px;">{{ $message }}</div>

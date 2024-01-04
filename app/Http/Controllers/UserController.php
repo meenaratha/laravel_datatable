@@ -92,7 +92,7 @@ class UserController extends Controller
            'address1' => 'required|string|max:255',
            'address2' => 'required|string|max:255',
            'city' => 'required|string|max:255',
-           'postal_code' => ['required', 'regex:/^\d{5}$/'],
+
              'postal_code' => 'required',
           'state' => 'required|string|max:255',
           'country' => 'required',
@@ -107,8 +107,8 @@ class UserController extends Controller
            'staff_qualification' => 'required|string|max:255',
            'staff_category' => 'required|string|max:255',
 
-          'authentication' => 'required', // Assuming 'authentication' is a checkbox
-             'two_factor'  => 'required',
+        //   'authentication' => 'required', // Assuming 'authentication' is a checkbox
+        //      'two_factor'  => 'required',
 
            'facebook'  => 'required|string|max:255', // Basic URL validation
            'twitter'  => 'required|string|max:255',
@@ -140,8 +140,6 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email|',
             'password' => 'required|max:6',
             'confirm_password' => 'required|same:password|max:6',
-
-            'terms' => 'required',
 
 
 
@@ -182,22 +180,22 @@ $request->validate([
             $personalDetails=User_personal_detail::create([
                 'user_id'=>$user_id,
                 'image'=>$imagePath,
-                'first_name'=>$request->input('first_name'),
+                'first_name'=>$request->input('first_name') ,
                 'last_name'=>$request->input('last_name') ,
                 'date_of_birth'=>$request->input('date_of_birth') ,
                 'gender'=>$request->input('gender') ,
                 'nric_number'=>$request->input('nric_number') ,
-                'passport_number'=>$request->input('passport_number'),
-                'short_name'=>$request->input('short_name'),
-                'race'=>$request->input('race'),
-                'religion'=>$request->input('religion'),
-                'address1'=>$request->input('address1'),
+                'passport_number'=>$request->input('passport_number') ,
+                'short_name'=>$request->input('short_name') ,
+                'race'=>$request->input('race') ,
+                'religion'=>$request->input('religion') ,
+                'address1'=>$request->input('address1') ,
                 'address2'=>$request->input('address2') ,
-                'city'=>$request->input('city'),
-                'state'=>$request->input('state'),
-                'country'=>$request->input('country'),
+                'city'=>$request->input('city') ,
+                'state'=>$request->input('state') ,
+                'country'=>$request->input('country') ,
                 'postal_code'=>$request->input('postal_code'),
-                'country_code'=>$request->input('country_code'),
+                'country_code'=>$request->input('country_code') ,
                 'mobile_number'=>$request->input('mobile_number') ,
                 'employment_status'=>$request->input('employment_status'),
                 // 'religion'=>$request->input('religion'),
@@ -205,46 +203,46 @@ $request->validate([
 
                 //employee
 
-                'joining_date'=>$request->input('joining_date') ,
-                'designation'=>$request->input('designation') ,
-                'department'=>$request->input('department'),
-                'staff_position'=>$request->input('staff_position'),
-                'salary_grade'=>$request->input('salary_grade'),
-                'staff_category'=>$request->input('staff_category'),
-                'staff_qualification'=>$request->input('staff_qualification'),
-                'stream_type'=>$request->input('stream_type'),
+                'joining_date'=>$request->input('joining_date') ?? null,
+                'designation'=>$request->input('designation') ?? null,
+                'department'=>$request->input('department') ?? null,
+                'staff_position'=>$request->input('staff_position') ?? null,
+                'salary_grade'=>$request->input('salary_grade') ?? null,
+                'staff_category'=>$request->input('staff_category') ?? null,
+                'staff_qualification'=>$request->input('staff_qualification') ?? null,
+                'stream_type'=>$request->input('stream_type') ?? null,
 
 
                 //login
 
 
-                'facebook'=>$request->input('facebook') ,
-                'twitter'=>$request->input('twitter') ,
-                'linkedIn'=>$request->input('linkedIn') ,
+                'facebook'=>$request->input('facebook') ?? null,
+                'twitter'=>$request->input('twitter') ?? null,
+                'linkedIn'=>$request->input('linkedIn') ?? null,
 
                 //medical
-                'height'=>$request->input('height') ,
-                'weight'=>$request->input('weight') ,
-                'allergy'=>$request->input('allergy') ,
+                'height'=>$request->input('height') ?? null ,
+                'weight'=>$request->input('weight') ?? null,
+                'allergy'=>$request->input('allergy') ?? null,
             ]);
             $bankDetails=User_bank_detail::create([
                 'user_id'=>$user_id,
                 'checknullable' => $request->input('checknullable'),
-                'bank_name'=>$request->input('bank_name')  ,
-                'account_holder'=>$request->input('account_holder') ,
-                'account_number'=>$request->input('account_number') ,
-                'swift_code'=>$request->input('swift_code') ,
-                'bank_branch'=>$request->input('bank_branch') ,
-                'bank_address'=>$request->input('bank_address') ,
-                'ifsc_code'=>$request->input('ifsc_code') ,
-                'bank_address_1'=>$request->input('bank_address_1') ,
-                'bank_address_2'=>$request->input('bank_address_2') ,
-                'bank_city'=>$request->input('bank_city') ,
-                'bank_state'=>$request->input('bank_state') ,
-                'bank_postal_code'=>$request->input('bank_postal_code') ,
-                'bank_country'=>$request->input('bank_country') ,
+                'bank_name'=>$request->input('bank_name')?? null,
+                'account_holder'=>$request->input('account_holder') ?? null,
+                'account_number'=>$request->input('account_number') ?? null,
+                'swift_code'=>$request->input('swift_code') ?? null,
+                'bank_branch'=>$request->input('bank_branch') ?? null,
+                'bank_address'=>$request->input('bank_address') ?? null,
+                'ifsc_code'=>$request->input('ifsc_code') ?? null,
+                'bank_address_1'=>$request->input('bank_address_1') ?? null,
+                'bank_address_2'=>$request->input('bank_address_2') ?? null,
+                'bank_city'=>$request->input('bank_city') ?? null,
+                'bank_state'=>$request->input('bank_state') ?? null,
+                'bank_postal_code'=>$request->input('bank_postal_code') ?? null,
+                'bank_country'=>$request->input('bank_country') ?? null,
 
-                'terms' =>$request->input('terms'),
+
             ]);
         }
         $data=array('subject'=>'Email Verification', 'first_name'=>$request->input('first_name'), 'last_name'=>$request->input('last_name'), 'user_id'=>$user_id, 'rand'=>$rand);
@@ -317,8 +315,9 @@ $request->validate([
     public function profile(){
         $user=Auth::guard('web')->user();
         $personalDetails=DB::table('user_personal_details')->where('user_id', $user->user_id)->first();
+        $bank=DB::table('user_bank_details')->where('user_id', $user->user_id)->first();
         $countries = Countries::all();
-        return view('user.update-profile')->with(['user'=>$user, 'countries'=>$countries, 'details'=>$personalDetails]);
+        return view('user.update-profile')->with(['user'=>$user, 'countries'=>$countries, 'details'=>$personalDetails, 'bank' =>$bank]);
     }
 
     public function changePassword(){
@@ -385,8 +384,9 @@ $request->validate([
         $user = Auth::user();
         $detail=DB::table('user_personal_details')->where('user_id', $user->user_id)->first();
         $bank=DB::table('user_bank_details')->where('user_id', $user->user_id)->first();
-        $country=Countries::all();
+        $country=Countries::all(); //table name
         return view('user.profile')->with(['user'=>$user, 'detail'=>$detail, 'bank'=>$bank, 'counties'=>$country,]);
+
     }
 
     public function personalUpdate(Request $request){
