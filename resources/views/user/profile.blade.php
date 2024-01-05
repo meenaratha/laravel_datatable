@@ -314,7 +314,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="account_holder">Allergy</label>
-                                            <input type="password" class="form-control" id="account_holder" value="{{$detail->allergy}}" name="account_holder" placeholder="Enter Account Holder Name"  disabled>
+                                            <input type="password" class="form-control" id="account_holder" value="{{$detail->allergy}}" name="allergy" placeholder="Enter Account Holder Name"  disabled>
                                         </div>
                                     </div>
 

@@ -343,6 +343,16 @@ class UserController extends Controller
             'first_name' => $first_name,
             'last_name' => $last_name,
             'date_of_birth' => $date_of_birth,
+            'nric_number' => $nric_number,
+            'passport_number' => $passport_number,
+            'gender' => $gender,
+            'date_of_birth' => $date_of_birth,
+            'date_of_birth' => $date_of_birth,
+            'date_of_birth' => $date_of_birth,
+            'date_of_birth' => $date_of_birth,
+            'date_of_birth' => $date_of_birth,
+
+
         ]);
         return back();
     }
