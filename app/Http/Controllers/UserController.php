@@ -80,68 +80,72 @@ class UserController extends Controller
 
         $validator = Validator::make($request->all(), [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file types and size as needed
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'date_of_birth' => 'required|',
-            'gender' => 'required|string|in:Male,Female,Other',
-           'nric_number' => 'required_without_all:passport_number|string|max:255',
-           'passport_number' => 'required_without_all:nric_number|string|max:255',
-           'short_name' => 'required|string|max:255',
-           'race' => 'required|string|max:255',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'date_of_birth' => 'required',
+            'gender' => 'required',
+           'nric_number' => 'required_without_all:passport_number',
+           'passport_number' => 'required_without_all:nric_number',
+           'short_name' => 'required',
+           'race' => 'required',
           'religion' => 'required',
-           'address1' => 'required|string|max:255',
-           'address2' => 'required|string|max:255',
-           'city' => 'required|string|max:255',
+           'address1' => 'required',
+           'address2' => 'required',
+           'city' => 'required',
 
              'postal_code' => 'required',
-          'state' => 'required|string|max:255',
+          'state' => 'required',
           'country' => 'required',
           'country_code' => 'required',
            'mobile_number' => ['required', 'regex:/^\d{10}$/'],
-           'employment_status' => 'required|string|max:255',
-           'designation' => 'required|string|max:255',
-           'department' => 'required|string|max:255',
-           'staff_position' => 'required|string|max:255',
-           'salary_grade' => 'required|string|max:255',
-           'staff_category' => 'required|string|max:255',
-           'staff_qualification' => 'required|string|max:255',
-           'staff_category' => 'required|string|max:255',
+           'employee_status' => 'required',
+           'designation' => 'required',
+           'department' => 'required',
+           'staff_position' => 'required',
+           'salary_grade' => 'required',
+           'staff_category' => 'required',
+           'staff_qualification' => 'required',
+           'staff_category' => 'required',
+           'stream_type' =>'required',
 
         //   'authentication' => 'required', // Assuming 'authentication' is a checkbox
         //      'two_factor'  => 'required',
 
-           'facebook'  => 'required|string|max:255', // Basic URL validation
-           'twitter'  => 'required|string|max:255',
-           'linkedIn'  => 'required|string|max:255',
+           'facebook'  => 'required', // Basic URL validation
+           'twitter'  => 'required',
+           'linkedIn'  => 'required',
 
            //medical
 
            'disable_medical' => 'boolean',
-           'height'=> 'required_if:disable_medical,0|string|max:255',
-           'weight'=> 'required_if:disable_medical,0|string|max:255',
-           'allergy'=> 'required_if:disable_medical,0|string|max:255',
+           'height'=> 'required_if:disable_medical,1',
+           'weight'=> 'required_if:disable_medical,1',
+           'allergy'=> 'required_if:disable_medical,1',
 
-            // Bank details validation rules
-            'checknullable' => 'boolean',
-            'bank_name' => 'required_if:checknullable,0|string|max:255',
-            'account_holder' => 'required_if:checknullable,0|string|max:255',
-            'account_number' => 'required_if:checknullable,0|unique:user_bank_details,account_number', // Adjust 'your_table_name' with the actual table name
-            'swift_code' => 'required_if:checknullable,0|string|max:255',
-            'bank_branch' => 'required_if:checknullable,0|string|max:255',
-            'bank_address'=> 'required_if:checknullable,0|string|max:255',
-            'ifsc_code'=> 'required_if:checknullable,0',
-            'bank_address_1'=>'required_if:checknullable,0|string|max:255',
-            'bank_address_2'=> 'required_if:checknullable,0|string|max:255',
-            'bank_city'=> 'required_if:checknullable,0|string|max:255',
-            'bank_state'=> 'required_if:checknullable,0|string|max:255',
-            'bank_postal_code'=> 'required_if:checknullable,0|string|max:255',
-            'bank_country'=> 'required_if:checknullable,0|string|max:255',
+           // Bank details validation rules
+           'checknullable' => 'boolean',
+            // Assuming $request is your form request or input data
+
+            'bank_name' => 'required_if:checknullable,1|string|max:255',
+            'account_holder' => 'required_if:checknullable,1|string|max:255',
+            //'account_number' => 'required_if:checknullable,0|unique:user_bank_details,account_number', // Adjust 'your_table_name' with the actual table name
+            'account_number' => 'required_if:checknullable,1|string|max:255',
+            'swift_code' => 'required_if:checknullable,1|string|max:255',
+            'bank_branch' => 'required_if:checknullable,1|string|max:255',
+            'bank_address'=> 'required_if:checknullable,1|string|max:255',
+            'ifsc_code'=> 'required_if:checknullable,1|string|max:255',
+            'bank_address_1'=>'required_if:checknullable,1|string|max:255',
+            'bank_address_2'=> 'required_if:checknullable,1|string|max:255',
+            'bank_city'=> 'required_if:checknullable,1|string|max:255',
+            'bank_state'=> 'required_if:checknullable,1|string|max:255',
+            'bank_postal_code'=> 'required_if:checknullable,1|string|max:255',
+            'bank_country'=> 'required_if:checknullable,1|string|max:255',
 
             'email' => 'required|email|unique:users,email|',
             'password' => 'required|max:6',
             'confirm_password' => 'required|same:password|max:6',
 
-
+            'terms' => 'required',
 
         ]);
 
@@ -149,11 +153,14 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // $checknullableValue = $condition ? 1 : 0;
+
+        // $request->merge(['checknullable' => $checknullableValue]);
 
         // Validate the incoming request
-$request->validate([
-    'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file validation rules as needed
-]);
+// $request->validate([
+//     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust file validation rules as needed
+// ]);
 
 
 
@@ -180,7 +187,7 @@ $request->validate([
             $personalDetails=User_personal_detail::create([
                 'user_id'=>$user_id,
                 'image'=>$imagePath,
-                'first_name'=>$request->input('first_name') ,
+                'first_name'=>$request->input('first_name'),
                 'last_name'=>$request->input('last_name') ,
                 'date_of_birth'=>$request->input('date_of_birth') ,
                 'gender'=>$request->input('gender') ,
@@ -194,56 +201,58 @@ $request->validate([
                 'city'=>$request->input('city') ,
                 'state'=>$request->input('state') ,
                 'country'=>$request->input('country') ,
-                'postal_code'=>$request->input('postal_code'),
+                'postal_code'=>$request->input('postal_code') ,
                 'country_code'=>$request->input('country_code') ,
                 'mobile_number'=>$request->input('mobile_number') ,
-                'employment_status'=>$request->input('employment_status'),
+                'employment_status'=>$request->input('employee_status'),
                 // 'religion'=>$request->input('religion'),
 
 
                 //employee
 
-                'joining_date'=>$request->input('joining_date') ?? null,
-                'designation'=>$request->input('designation') ?? null,
-                'department'=>$request->input('department') ?? null,
-                'staff_position'=>$request->input('staff_position') ?? null,
-                'salary_grade'=>$request->input('salary_grade') ?? null,
-                'staff_category'=>$request->input('staff_category') ?? null,
-                'staff_qualification'=>$request->input('staff_qualification') ?? null,
-                'stream_type'=>$request->input('stream_type') ?? null,
+                'joining_date'=>$request->input('joining_date') ,
+                'designation'=>$request->input('designation')  ,
+                'department'=>$request->input('department') ,
+                'staff_position'=>$request->input('staff_position') ,
+                'salary_grade'=>$request->input('salary_grade') ,
+                'staff_category'=>$request->input('staff_category') ,
+                'staff_qualification'=>$request->input('staff_qualification') ,
+                'stream_type'=>$request->input('stream_type') ,
 
 
                 //login
 
 
-                'facebook'=>$request->input('facebook') ?? null,
-                'twitter'=>$request->input('twitter') ?? null,
-                'linkedIn'=>$request->input('linkedIn') ?? null,
+                'facebook'=>$request->input('facebook') ,
+                'twitter'=>$request->input('twitter') ,
+                'linkedIn'=>$request->input('linkedIn') ,
 
                 //medical
-                'height'=>$request->input('height') ?? null ,
-                'weight'=>$request->input('weight') ?? null,
-                'allergy'=>$request->input('allergy') ?? null,
+                'height'=>$request->input('height')  ,
+                'weight'=>$request->input('weight') ,
+                'allergy'=>$request->input('allergy') ,
             ]);
             $bankDetails=User_bank_detail::create([
                 'user_id'=>$user_id,
                 'checknullable' => $request->input('checknullable'),
-                'bank_name'=>$request->input('bank_name')?? null,
-                'account_holder'=>$request->input('account_holder') ?? null,
-                'account_number'=>$request->input('account_number') ?? null,
-                'swift_code'=>$request->input('swift_code') ?? null,
-                'bank_branch'=>$request->input('bank_branch') ?? null,
-                'bank_address'=>$request->input('bank_address') ?? null,
-                'ifsc_code'=>$request->input('ifsc_code') ?? null,
-                'bank_address_1'=>$request->input('bank_address_1') ?? null,
-                'bank_address_2'=>$request->input('bank_address_2') ?? null,
-                'bank_city'=>$request->input('bank_city') ?? null,
-                'bank_state'=>$request->input('bank_state') ?? null,
-                'bank_postal_code'=>$request->input('bank_postal_code') ?? null,
-                'bank_country'=>$request->input('bank_country') ?? null,
+                'bank_name'=>$request->input('bank_name'),
+                'account_holder'=>$request->input('account_holder') ,
+                'account_number'=>$request->input('account_number') ,
+                'swift_code'=>$request->input('swift_code') ,
+                'bank_branch'=>$request->input('bank_branch') ,
+                'bank_address'=>$request->input('bank_address') ,
+                'ifsc_code'=>$request->input('ifsc_code') ,
+                'address1'=>$request->input('bank_address_1') ,
+                'address2'=>$request->input('bank_address_2'),
+                'city'=>$request->input('bank_city') ,
+                'state'=>$request->input('bank_state') ,
+                'postal_code'=>$request->input('bank_postal_code') ,
+                'country'=>$request->input('bank_country') ,
+                'terms'=>$request->input('terms') ,
 
 
             ]);
+
         }
         $data=array('subject'=>'Email Verification', 'first_name'=>$request->input('first_name'), 'last_name'=>$request->input('last_name'), 'user_id'=>$user_id, 'rand'=>$rand);
             $email=$request->input('email');

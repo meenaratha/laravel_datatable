@@ -15,19 +15,19 @@ return new class extends Migration
         Schema::create('user_bank_details', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->string('bank_name');
-            $table->string('account_holder');
-            $table->string('account_number');
-            $table->string('swift_code');
-            $table->string('bank_branch');
-            $table->string('bank_address');
-            $table->string('ifsc_code');
-            $table->string('address1');
-            $table->string('address2');
-            $table->string('city');
-            $table->string('state');
-            $table->string('postal_code');
-            $table->string('country');
+            $table->string('bank_name')->nullable();
+            $table->string('account_holder')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('swift_code')->nullable();
+            $table->string('bank_branch')->nullable();
+            $table->string('bank_address')->nullable();
+            $table->string('ifsc_code')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('country')->nullable();
+            $table->string('terms');
             $table->timestamps();
 
         });

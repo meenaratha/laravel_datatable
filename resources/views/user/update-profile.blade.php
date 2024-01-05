@@ -217,16 +217,15 @@
                                 <button type="submit" id="profileSaveButton" class="btn btn-success d-none" >Save</button>
                                 <button type="button" id="profileCancelButton" class="btn btn-danger d-none">Cancel</button>
                                 <span id="profileEditButton" class="btn btn-secondary">Edit</span>
-                            </form>
+
                         </div>
                         <!---employee status-->
-                        <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
+                               <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
                             <div class="page-header">
                                 <h5 class="page-title">Empolyees Details</h5>
                             </div>
                             <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
-                            <form action="/user-bank-update" method="POST" id="bankForm">
-                                @csrf
+
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -291,46 +290,10 @@
                                 <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
                                 <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
                                 <span id="bankEditButton" class="btn btn-secondary">Edit</span>
-                            </form>
+
                         </div>
 
-                         <!---login status-->
-                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
-                            <div class="page-header">
-                                <h5 class="page-title">Login Details</h5>
-                            </div>
-                            <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
-                            <form action="/user-bank-update" method="POST" id="bankForm">
-                                @csrf
-                                <div class="row ">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="bank_name">User Name</label>
-                                            <input type="text" class="form-control" id="bank_name" value="{{$user->user_name}}" name="bank_name" placeholder="Enter Bamk Name" required >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="account_number">Email</label>
-                                            <input type="text" class="form-control" id="account_number" value="{{$user->email}}" name="account_number" placeholder="Enter Account Number" required >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="account_holder">Password</label>
-                                            <input type="password" class="form-control" id="account_holder" value="{{$user->password}}" name="account_holder" placeholder="Enter Account Holder Name" required >
-                                        </div>
-                                    </div>
 
-                                </div>
-
-
-
-                                <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
-                                <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
-                                <span id="bankEditButton" class="btn btn-secondary">Edit</span>
-                            </form>
-                        </div>
 
                          <!---medical history-->
                          <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
@@ -338,8 +301,7 @@
                                 <h5 class="page-title">Medical History</h5>
                             </div>
                             <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
-                            <form action="/user-bank-update" method="POST" id="bankForm">
-                                @csrf
+
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -369,6 +331,7 @@
                                 <span id="bankEditButton" class="btn btn-secondary">Edit</span>
                             </form>
                         </div>
+
 
 
                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">

@@ -24,6 +24,7 @@
                             <div class="page-header">
                                 <h5 class="page-title">Profile Settings</h5>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -58,6 +59,8 @@
                             <div id="profile-success-message" style="display: none;" class="alert alert-success"></div>
                             <form action="/user-personal-update" method="POST" id="profileForm">
                                 @csrf
+                                <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
+
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -82,19 +85,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="date_of_birth">Date Of Birth</label>
-                                            <input type="date" class="form-control" id="date_of_birth" value="{{$detail->date_of_birth}}" name="date_of_birth" placeholder="Enter First Name" required disabled>
+                                            <input type="date" class="form-control" id="date_of_birth"   value="{{$detail->date_of_birth}}" name="date_of_birth" placeholder="Enter Your Date of Birth" required disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="nric_number">NRIC Number</label>
-                                            <input type="text" class="form-control" id="nric_number" value="{{$detail->nric_number}}" name="nric_number" placeholder="Enter Last Name" required disabled>
+                                            <input type="text" class="form-control" id="nric_number" value="{{$detail->nric_number}}" name="nric_number" placeholder="Enter NRIC Number" required disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="passport_number">Passport Number</label>
-                                            <input type="text" class="form-control" id="passport_number" value="{{$detail->passport_number}}" name="passport_number" placeholder="Enter Email" required disabled>
+                                            <input type="text" class="form-control" id="passport_number" value="{{$detail->passport_number}}" name="passport_number" placeholder="Enter Passport No:" required disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +115,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="short_name">Short Name</label>
-                                            <input type="text" class="form-control" id="short_name" value="{{$detail->short_name}}" name="short_name" placeholder="Enter Last Short Name" required disabled>
+                                            <input type="text" class="form-control" id="short_name" value="{{$detail->short_name}}" name="short_name" placeholder="Enter  Short Name" required disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -171,7 +174,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="postal_code">Country Code</label>
-                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->country_code}}" name="postal_code" placeholder="Enter Postal Code" required disabled>
+                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->country_code}}" name="country_code" placeholder="Enter Postal Code" required disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -213,19 +216,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" id="profileSaveButton" class="btn btn-success d-none" >Save</button>
-                                <button type="button" id="profileCancelButton" class="btn btn-danger d-none">Cancel</button>
-                                <span id="profileEditButton" class="btn btn-secondary">Edit</span>
-                            </form>
-                        </div>
-                        <!---employee status-->
+                            </div>
+                             <!---employee status-->
                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
                             <div class="page-header">
                                 <h5 class="page-title">Empolyees Details</h5>
                             </div>
                             <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
-                            <form action="/user-bank-update" method="POST" id="bankForm">
-                                @csrf
+
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -287,58 +285,16 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
-                                <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
-                                <span id="bankEditButton" class="btn btn-secondary">Edit</span>
-                            </form>
+
+
                         </div>
-
-                         <!---login status-->
-                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
-                            <div class="page-header">
-                                <h5 class="page-title">Login Details</h5>
-                            </div>
-                            <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
-                            <form action="/user-bank-update" method="POST" id="bankForm">
-                                @csrf
-                                <div class="row ">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="bank_name">User Name</label>
-                                            <input type="text" class="form-control" id="bank_name" value="{{$user->user_name}}" name="bank_name" placeholder="Enter Bamk Name" required disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="account_number">Email</label>
-                                            <input type="text" class="form-control" id="account_number" value="{{$user->email}}" name="account_number" placeholder="Enter Account Number" required disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="account_holder">Password</label>
-                                            <input type="password" class="form-control" id="account_holder" value="{{$user->password}}" name="account_holder" placeholder="Enter Account Holder Name" required disabled>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-
-                                <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
-                                <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
-                                <span id="bankEditButton" class="btn btn-secondary">Edit</span>
-                            </form>
-                        </div>
-
-                         <!---medical history-->
+                       <!---medical history-->
                          <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
                             <div class="page-header">
                                 <h5 class="page-title">Medical History</h5>
                             </div>
                             <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
-                            <form action="/user-bank-update" method="POST" id="bankForm">
-                                @csrf
+
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -361,13 +317,20 @@
 
                                 </div>
 
+                                <button type="submit" id="profileSaveButton" class="btn btn-success d-none" >Save</button>
+                                <button type="button" id="profileCancelButton" class="btn btn-danger d-none">Cancel</button>
+                                <span id="profileEditButton" class="btn btn-secondary">Edit</span>
 
 
-                                <button type="submit" id="bankSaveButton" class="btn btn-success d-none" >Save</button>
-                                <button type="button" id="bankCancelButton" class="btn btn-danger d-none">Cancel</button>
-                                <span id="bankEditButton" class="btn btn-secondary">Edit</span>
                             </form>
                         </div>
+
+
+
+                            </form>
+
+                        </div>
+
 
 
                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">

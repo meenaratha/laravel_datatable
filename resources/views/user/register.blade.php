@@ -36,7 +36,17 @@
 <div class="container form-container">
     <p class="text-center mb-4" style="text-align: right;">Personal Details</p>
 
-
+<div class="form-row">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+</div>
      <!----image upload-->
      <div class="form-row">
         <div class="col-md-4">
@@ -357,10 +367,10 @@
                         </span>
                     </div>
                     <select class="form-control" name="employee_status" id="countryCode">
-                    <option  selected>Select Employment Status</option>
-                        <option >xx-xx</option>
-                        <option >xx-xx</option>
-                        <option >xx-xx</option>
+                    <option value="" selected>Select Employment Status</option>
+                        <option value="on-roll">xx-xx</option>
+                        <option value="on-roll">xx-xx</option>
+                        <option value="on-roll">xx-xx</option>
                         <!-- Add more country codes as needed -->
                     </select>
                 </div>
@@ -608,9 +618,9 @@
                 <input type="checkbox" name="authentication" class="custom-control-input" id="authentication">
                 <label class="custom-control-label" for="authentication"> Lock</label>
             </div>
-            @error('authentication')
+            {{-- @error('authentication')
             <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px; font-weight:500; paddding-left:5px;">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
         </div>
 
 
@@ -627,9 +637,9 @@
                 <input type="checkbox" name="two_factor" class="custom-control-input" id="toggleFirstName1">
                 <label class="custom-control-label" for="toggleFirstName1"> Enable Two Factor Authentication</label>
             </div>
-            @error('two_factor')
+            {{-- @error('two_factor')
             <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px; font-weight:500; paddding-left:5px;">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
         </div>
     </div>
 </div>
@@ -692,7 +702,7 @@
   <div class="form-row">
         <div class="col-md-4">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="disable_medical"  class="custom-control-input" id="disablemedicalinput">
+                <input type="checkbox" name="disable_medical"  class="custom-control-input" id="disablemedicalinput" value="0">
                 <label class="custom-control-label" for="disablemedicalinput"> Skipped Medical Histroy</label>
             </div>
         </div>
@@ -752,7 +762,7 @@
    <div class="form-row">
         <div class="col-md-4">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" name="checknullable" class="custom-control-input" id="disablebankCheckbox">
+                <input type="checkbox" name="checknullable" class="custom-control-input" id="disablebankCheckbox" value="0">
                 <label class="custom-control-label" for="disablebankCheckbox"> Skipped Bank Details</label>
             </div>
         </div>
@@ -983,7 +993,7 @@
 <div class="form-row">
     <div class="col-md-4" style="margin-top: 30px;">
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" name="terms" class="custom-control-input" id="termsCheckbox" >
+            <input type="checkbox" name="terms" class="custom-control-input" id="termsCheckbox"  value="1">
             <label class="custom-control-label" for="termsCheckbox" style="color: blue;text-decoration: underline; padding-left: 10px;"> Agree the Terms and Conditions </label>
         </div>
         @error('terms')
