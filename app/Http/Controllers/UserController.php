@@ -448,6 +448,8 @@ class UserController extends Controller
         $bank_state=$request->input('bank_state');
         $bank_postal_code=$request->input('bank_postal_code');
         $bank_country=$request->input('bank_country');
+        $bank_address=$request->input('bank_address');
+        $ifsc_code=$request->input('ifsc_code');
         DB::table('user_bank_details')->where('user_id', $user->user_id)->update([
             'bank_name'=>$bank_name,
             'account_holder'=>$account_holder,
@@ -459,6 +461,9 @@ class UserController extends Controller
             'city'=>$bank_city,
             'state'=>$bank_state,
             'postal_code'=>$bank_postal_code,
+            'country'=>$bank_country,
+            'bank_address'=>$bank_address,
+            'ifsc_code'=>$ifsc_code,
             'country'=>$bank_country,
         ]);
     }

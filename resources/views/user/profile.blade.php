@@ -21,9 +21,7 @@
                 <div class="main-panel">
                     <div class="content-wrapper">
                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218)">
-                            <div class="page-header">
-                                <h5 class="page-title">Profile Settings</h5>
-                            </div>
+
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -55,9 +53,11 @@
                                     </div>
                                 </div>
                             </form>
-
+                            <div class="page-header">
+                                <h5 class="page-title">Profile Settings</h5>
+                            </div>
                             <div id="profile-success-message" style="display: none;" class="alert alert-success"></div>
-                            <form action="/user-personal-update" method="POST" id="profileForm">
+                            <form action="/user-personal-update" method="POST" id="profileForm" enctype="multipart/form-data">
                                 @csrf
                                 <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
 
@@ -65,19 +65,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="firstName">First Name</label>
-                                            <input type="text" class="form-control" id="firstName" name="first_name" value="{{$detail->first_name}}" placeholder="Enter First Name" required disabled>
+                                            <input type="text" class="form-control" id="firstName" name="first_name" value="{{$detail->first_name}}" placeholder="Enter First Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="lastName">Last Name</label>
-                                            <input type="text" class="form-control" id="lastName" name="last_name" value="{{$detail->last_name}}" placeholder="Enter Last Name" required disabled>
+                                            <input type="text" class="form-control" id="lastName" name="last_name" value="{{$detail->last_name}}" placeholder="Enter Last Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}" placeholder="Enter Email" required disabled>
+                                            <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}" placeholder="Enter Email"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -85,43 +85,48 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="date_of_birth">Date Of Birth</label>
-                                            <input type="date" class="form-control" id="date_of_birth"   value="{{$detail->date_of_birth}}" name="date_of_birth" placeholder="Enter Your Date of Birth" required disabled>
+                                            <input type="date" class="form-control" id="date_of_birth"   value="{{$detail->date_of_birth}}" name="date_of_birth" placeholder="Enter Your Date of Birth"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="nric_number">NRIC Number</label>
-                                            <input type="text" class="form-control" id="nric_number" value="{{$detail->nric_number}}" name="nric_number" placeholder="Enter NRIC Number" required disabled>
+                                            <input type="text" class="form-control" id="nric_number" value="{{$detail->nric_number}}" name="nric_number" placeholder="Enter NRIC Number"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="passport_number">Passport Number</label>
-                                            <input type="text" class="form-control" id="passport_number" value="{{$detail->passport_number}}" name="passport_number" placeholder="Enter Passport No:" required disabled>
+                                            <input type="text" class="form-control" id="passport_number" value="{{$detail->passport_number}}" name="passport_number" placeholder="Enter Passport No:"  disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row ">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
+                                        <div class="col-md-4">
                                             <label for="gender">Gender</label>
-                                            <select name="gender" class="form-control" id="gender" disabled>
-                                                <option value="{{$detail->gender}}">{{$detail->gender}}</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
+                                            <div class="input-group">
+
+                                                <select name="gender" class="form-control" id="gender" disabled>
+                                                    <option value="{{$detail->gender}}">{{$detail->gender}}</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                            @error('gender')
+                                            <div class="error-message" style="color: red; font-size: 14px; margin-top: 5px; font-weight:500; paddding-left:5px;">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                    </div>
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="short_name">Short Name</label>
-                                            <input type="text" class="form-control" id="short_name" value="{{$detail->short_name}}" name="short_name" placeholder="Enter  Short Name" required disabled>
+                                            <input type="text" class="form-control" id="short_name" value="{{$detail->short_name}}" name="short_name" placeholder="Enter Short Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="race">Race</label>
-                                            <input type="text" class="form-control" id="rece" value="{{$detail->race}}" name="race" placeholder="Enter Race" required disabled>
+                                            <input type="text" class="form-control" id="rece" value="{{$detail->race}}" name="race" placeholder="Enter Race"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -129,19 +134,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="address1">Address 1</label>
-                                            <input type="text" class="form-control" id="address1" value="{{$detail->address1}}" name="address1" placeholder="Enter Address 1" required disabled>
+                                            <input type="text" class="form-control" id="address1" value="{{$detail->address1}}" name="address1" placeholder="Enter Address 1"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="address2">Address 2</label>
-                                            <input type="text" class="form-control" id="address2" value="{{$detail->address2}}" name="address2" placeholder="Enter Address 2" required disabled>
+                                            <input type="text" class="form-control" id="address2" value="{{$detail->address2}}" name="address2" placeholder="Enter Address 2"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="city">City</label>
-                                            <input type="text" class="form-control" id="city" value="{{$detail->city}}" name="city" placeholder="Enter city" required disabled>
+                                            <input type="text" class="form-control" id="city" value="{{$detail->city}}" name="city" placeholder="Enter city"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -149,13 +154,13 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="postal_code">Postal Code</label>
-                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->postal_code}}" name="postal_code" placeholder="Enter Postal Code" required disabled>
+                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->postal_code}}" name="postal_code" placeholder="Enter Postal Code"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="state">State</label>
-                                            <input type="text" class="form-control" id="state" value="{{$detail->state}}" name="state" placeholder="Enter State" required disabled>
+                                            <input type="text" class="form-control" id="state" value="{{$detail->state}}" name="state" placeholder="Enter State"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -174,19 +179,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="postal_code">Country Code</label>
-                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->country_code}}" name="country_code" placeholder="Enter Postal Code" required disabled>
+                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->country_code}}" name="country_code" placeholder="Enter Postal Code"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="state">State</label>
-                                            <input type="text" class="form-control" id="state" value="{{$detail->mobile_number}}" name="state" placeholder="Enter State" required disabled>
+                                            <input type="text" class="form-control" id="state" value="{{$detail->mobile_number}}" name="state" placeholder="Enter State"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="country">Employment Status</label>
-                                            <select name="country" id="country" class="form-control" disabled>
+                                            <select name="employee_status" id="country" class="form-control" disabled>
                                                 <option value="{{$detail->employment_status}}">{{$detail->employment_status}}</option>
                                                 {{-- @foreach ($counties as $country)
                                                 <option value="{{$country->name}}">{{$country->name}}</option>
@@ -200,47 +205,46 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="postal_code">Facebook</label>
-                                            <input type="text" class="form-control" id="postal_code" value="{{$detail->facebook}}" name="postal_code" placeholder="Enter Postal Code" required disabled>
+                                            <input type="text" class="form-control" id="facebook" value="{{$detail->facebook}}" name="facebook" placeholder="Enter Postal Code"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="state">Twitter</label>
-                                            <input type="text" class="form-control" id="state" value="{{$detail->twitter}}" name="state" placeholder="Enter State" required disabled>
+                                            <input type="text" class="form-control" id="twitter" value="{{$detail->twitter}}" name="twitter" placeholder="Enter State"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="country">Linkedin</label>
-                                            <input type="text" class="form-control" id="state" value="{{$detail->linkedin}}" name="state" placeholder="Enter State" required disabled>
+                                            <input type="text" class="form-control" id="linkedin" value="{{$detail->linkedin}}" name="linkedin" placeholder="Enter State"  disabled>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                              <!---employee status-->
-                        <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
+                             <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
                             <div class="page-header">
-                                <h5 class="page-title">Empolyees Details</h5>
+                                <h5 class="page-title">Empolyees Details gthubbbb</h5>
                             </div>
-                            <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
 
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_name">Roles</label>
-                                            <input type="text" class="form-control" id="bank_name" value="New User" name="bank_name" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="roles" value="New User" name="roles" placeholder="Enter Bamk Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="account_holder">Joining Date</label>
-                                            <input type="text" class="form-control" id="account_holder" value="{{$detail->joining_date}}" name="account_holder" placeholder="Enter Account Holder Name" required disabled>
+                                            <input type="text" class="form-control" id="account_holder" value="{{$detail->joining_date}}" name="join_date" placeholder="Enter Account Holder Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="account_number">Designation</label>
-                                            <input type="text" class="form-control" id="account_number" value="{{$detail->designation}}" name="account_number" placeholder="Enter Account Number" required disabled>
+                                            <input type="text" class="form-control" id="designation" value="{{$detail->designation}}" name="designation" placeholder="Enter designation"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -248,19 +252,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="swift_code">Department</label>
-                                            <input type="text" class="form-control" id="swift_code" value="{{$detail->department}}" name="swift_code" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="department" value="{{$detail->department}}" name="department" placeholder="Enter department"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_branch">Staff Postion</label>
-                                            <input type="text" class="form-control" id="bank_branch" value="{{$detail->staff_position}}" name="bank_branch" placeholder="Enter Account Holder Name" required disabled>
+                                            <input type="text" class="form-control" id="staff_position" value="{{$detail->staff_position}}" name="staff_position" placeholder="Enter staff position"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_address1">Salary Grade</label>
-                                            <input type="text" class="form-control" id="bank_address1" value="{{$detail->salary_grade}}" name="bank_address1" placeholder="Enter Salary Grade" required disabled>
+                                            <input type="text" class="form-control" id="salary_grade" value="{{$detail->salary_grade}}" name="salary_grade" placeholder="Enter Salary Grade"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -268,19 +272,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_address2">Staff Qualification</label>
-                                            <input type="text" class="form-control" id="bank_address2" value="{{$detail->staff_qualification}}" name="bank_address2" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="staff_qualification" value="{{$detail->staff_qualification}}" name="staff_qualification" placeholder="Enter Staff Qualification"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_city">Stream Type</label>
-                                            <input type="text" class="form-control" id="bank_city" value="{{$detail->stream_type}}" name="bank_city" placeholder="Enter Account Holder Name" required disabled>
+                                            <input type="text" class="form-control" id="stream_type" value="{{$detail->stream_type}}" name="stream_type" placeholder="Enter stream type"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_state">Staff Category</label>
-                                            <input type="text" class="form-control" id="bank_state" value="{{$detail->staff_category}}" name="bank_state" placeholder="Enter Account Number" required disabled>
+                                            <input type="text" class="form-control" id="staff_category" value="{{$detail->staff_category}}" name="staff_category" placeholder="Enter Staff Category"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -289,29 +293,28 @@
 
                         </div>
                        <!---medical history-->
-                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
+                        <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
                             <div class="page-header">
                                 <h5 class="page-title">Medical History</h5>
                             </div>
-                            <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
 
                                 <div class="row ">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_name">Height</label>
-                                            <input type="text" class="form-control" id="bank_name" value="{{$detail->height}}" name="bank_name" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="height" value="{{$detail->height}}" name="height" placeholder="Enter Bamk Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="account_number">Weight</label>
-                                            <input type="text" class="form-control" id="account_number" value="{{$detail->weight}}" name="account_number" placeholder="Enter Account Number" required disabled>
+                                            <input type="text" class="form-control" id="account_number" value="{{$detail->weight}}" name="weight" placeholder="Enter Account Number"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="account_holder">Allergy</label>
-                                            <input type="password" class="form-control" id="account_holder" value="{{$detail->allergy}}" name="account_holder" placeholder="Enter Account Holder Name" required disabled>
+                                            <input type="password" class="form-control" id="account_holder" value="{{$detail->allergy}}" name="account_holder" placeholder="Enter Account Holder Name"  disabled>
                                         </div>
                                     </div>
 
@@ -322,21 +325,16 @@
                                 <span id="profileEditButton" class="btn btn-secondary">Edit</span>
 
 
-                            </form>
-                        </div>
-
-
-
-                            </form>
 
                         </div>
-
-
+                    </form>
 
                         <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
                             <div class="page-header">
                                 <h5 class="page-title">Bank Settings</h5>
                             </div>
+
+
                             <div id="bank-success-message" style="display: none;" class="alert alert-success"></div>
                             <form action="/user-bank-update" method="POST" id="bankForm">
                                 @csrf
@@ -344,19 +342,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_name">Bank Name</label>
-                                            <input type="text" class="form-control" id="bank_name" value="{{$bank->bank_name}}" name="bank_name" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="bank_name" value="{{$bank->bank_name}}" name="bank_name" placeholder="Enter Bamk Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="account_holder">Account Holder Name</label>
-                                            <input type="text" class="form-control" id="account_holder" value="{{$bank->account_holder}}" name="account_holder" placeholder="Enter Account Holder Name" required disabled>
+                                            <input type="text" class="form-control" id="account_holder" value="{{$bank->account_holder}}" name="account_holder" placeholder="Enter Account Holder Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="account_number">Account Number</label>
-                                            <input type="text" class="form-control" id="account_number" value="{{$bank->account_number}}" name="account_number" placeholder="Enter Account Number" required disabled>
+                                            <input type="text" class="form-control" id="account_number" value="{{$bank->account_number}}" name="account_number" placeholder="Enter Account Number"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -364,19 +362,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="swift_code">Swift Code</label>
-                                            <input type="text" class="form-control" id="swift_code" value="{{$bank->swift_code}}" name="swift_code" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="swift_code" value="{{$bank->swift_code}}" name="swift_code" placeholder="Enter Bamk Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_branch">Bank Branch</label>
-                                            <input type="text" class="form-control" id="bank_branch" value="{{$bank->bank_branch}}" name="bank_branch" placeholder="Enter Account Holder Name" required disabled>
+                                            <input type="text" class="form-control" id="bank_branch" value="{{$bank->bank_branch}}" name="bank_branch" placeholder="Enter Account Holder Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_address1">Bank Address</label>
-                                            <input type="text" class="form-control" id="bank_address1" value="{{$bank->bank_address}}" name="bank_address1" placeholder="Enter Account Number" required disabled>
+                                            <input type="text" class="form-control" id="bank_address1" value="{{$bank->bank_address}}" name="bank_address" placeholder="Enter Bank Address"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -384,19 +382,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_address2">IFSC Code</label>
-                                            <input type="text" class="form-control" id="bank_address2" value="{{$bank->ifsc_code}}" name="bank_address2" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="bank_address2" value="{{$bank->ifsc_code}}" name="ifsc_code" placeholder="Enter Bamk Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_city">Address 1</label>
-                                            <input type="text" class="form-control" id="bank_city" value="{{$bank->address1}}" name="bank_city" placeholder="Enter Account Holder Name" required disabled>
+                                            <input type="text" class="form-control" id="bank_city" value="{{$bank->address1}}" name="bank_address1" placeholder="Enter Account Holder Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_state">Address 2</label>
-                                            <input type="text" class="form-control" id="bank_state" value="{{$bank->address2}}" name="bank_state" placeholder="Enter Account Number" required disabled>
+                                            <input type="text" class="form-control" id="bank_state" value="{{$bank->address2}}" name="bank_address2" placeholder="Enter Account Number"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -404,19 +402,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_address2">City</label>
-                                            <input type="text" class="form-control" id="bank_address2" value="{{$bank->city}}" name="bank_address2" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="bank_address2" value="{{$bank->city}}" name="bank_city" placeholder="Enter Bamk Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_city">State</label>
-                                            <input type="text" class="form-control" id="bank_city" value="{{$bank->state}}" name="bank_city" placeholder="Enter Account Holder Name" required disabled>
+                                            <input type="text" class="form-control" id="bank_city" value="{{$bank->state}}" name="bank_state" placeholder="Enter Account Holder Name"  disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_state">Postel Code</label>
-                                            <input type="text" class="form-control" id="bank_state" value="{{$bank->postal_code}}" name="bank_state" placeholder="Enter Account Number" required disabled>
+                                            <input type="text" class="form-control" id="bank_state" value="{{$bank->postal_code}}" name="bank_postal_code" placeholder="Enter Account Number"  disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -425,7 +423,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="bank_postal_code">Country</label>
-                                            <input type="text" class="form-control" id="bank_postal_code" value="{{$bank->country}}" name="bank_postal_code" placeholder="Enter Bamk Name" required disabled>
+                                            <input type="text" class="form-control" id="bank_postal_code" value="{{$bank->country}}" name="bank_country" placeholder="Enter Bamk Name"  disabled>
                                         </div>
 
                                     </div>
@@ -501,7 +499,8 @@
                 box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.75)
             }
             .form-control{
-                height: 40px;
+                height: 42px;
+
             }
         </style>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
