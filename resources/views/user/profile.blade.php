@@ -225,7 +225,7 @@
                              <!---employee status-->
                              <div class="container bg-white py-3 px-3 " style=" border:1px solid rgb(226, 218, 218); margin-top:20px;">
                             <div class="page-header">
-                                <h5 class="page-title">Empolyees Details gthubbbb</h5>
+                                <h5 class="page-title">Empolyees Details </h5>
                             </div>
 
                                 <div class="row ">
