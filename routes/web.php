@@ -80,7 +80,7 @@ Route::get('/admin/basicUser',[AdminController::class,'BasicUserList']);
 Route::get('/admin/trailUser',[AdminController::class,'TrUserList']);
 Route::get('/admin/onlineList',[AdminController::class,'OnlineUserList']);
 Route::get('/admin/add-data-form',[AdminController::class,'addDataForm']);
-Route::post('/fetch-stock',[AdminController::class,'fetchStock'])->name('fetch.stock');
+Route::any('/fetch-stock',[AdminController::class,'fetchStock'])->name('fetch.stock');
 Route::get('/admin/csv-upload',[AdminController::class,'csvPage']);
 Route::post('/handleCSVUpload', [AdminController::class,'handleCSVUpload']);
 Route::get('/admin/create-table', [AdminController::class,'createTableForm']);

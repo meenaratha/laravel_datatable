@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('admin/assets/vendors/select2/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/assets/css/maps/components/_checkbox-radio.css')}}">
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
   </head>
   <body>
@@ -60,7 +61,7 @@
                                       </thead>
                                       <!-- Table body -->
                                       <tbody id="stock-table-body">
-                                          @if(isset($stockData) && count($stockData) > 0)
+                                          {{-- @if(isset($stockData) && count($stockData) > 0)
                                               @foreach($stockData as $key => $stock)
                                                   <tr>
                                                       <td>{{ $key + 1 }}</td>
@@ -77,17 +78,22 @@
                                                   </tr>
                                               @endforeach
                                               <div style="margin-top-20px;"></div>
-                                              <div class="col-mt-12">
+                                              <div class="col-mt-12  pages">
                                                   <!-- Pagination links if needed -->
                                                   {!! $stockData->links() !!}
                                               </div>
-                                          @else
+                                          @else --}}
                                               <tr>
-                                                  <td colspan="5">No data available.</td>
+                                                  <td colspan="5">No data available yess.</td>
                                               </tr>
-                                          @endif
+                                          {{-- @endif --}}
                                       </tbody>
                                   </table>
+                                  <div class="col-mt-12 " style="margin-top:50px;">
+                                    <!-- Pagination links if needed -->
+                                    {{-- {!! $stockData->links() !!} --}}
+                                    <div class="pagination" style="width: 100%;"></div>
+                                </div>
                               </div>
                               </div>
                             </div>
@@ -276,24 +282,28 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Add this script at the end of your Blade template -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+{{-- <script>
     $(document).ready(function() {
         $('#fetchButton').on('click', function() {
+
             var selectedExchange = $('#exchange_name').val();
             if (selectedExchange) {
                 $.ajax({
                     type: 'POST',
                     url: '/fetch-stock',
+                    dataType:'json',
                     data: {
                         _token: '{{ csrf_token() }}',
-                        exchange_name: selectedExchange
+                       exchange_name: selectedExchange
                     },
                     success: function(response) {
+                        console.log(response);
                         if (response.stockData) {
                             var stockData = response.stockData;
+                            console.log(stockData);
                             var tableBody = $('#stock-table-body');
                             tableBody.empty(); // Clear existing table rows
-                            
+
                             // Populate table with fetched data
                             $.each(stockData.data, function(key, stock) {
                                 var row = '<tr>' +
@@ -313,7 +323,7 @@
                             });
 
                             // Display pagination links if available
-                            $('.pagination').html(stockData.links);
+                            $('.pagination').html(response.links);
                         } else {
                             // Handle error or no data case
                             tableBody.html('<tr><td colspan="5">No data available.</td></tr>');
@@ -328,8 +338,80 @@
             }
         });
     });
-</script>
+</script> --}}
+<script>
+$(document).ready(function() {
+    // Function to fetch stock data based on selected exchange and page
+    function fetchStockData(selectedExchange, page = 1) {
+        $.ajax({
+            type: 'POST',
+            url: '/fetch-stock',
+            dataType: 'json',
+            data: {
+                _token: '{{ csrf_token() }}',
+                exchange_name: selectedExchange,
+                page: page // Include the page parameter in the request
+            },
+            success: function(response) {
+                console.log(response);
+                if (response.stockData) {
+                    var stockData = response.stockData;
+                    console.log(stockData);
+                    var tableBody = $('#stock-table-body');
+                    tableBody.empty();
 
+                    $.each(stockData.data, function(key, stock) {
+                        // Populate table with fetched data
+                        var row = '<tr>' +
+                            //'<td>' + (key + 1) + '</td>' +
+                            '<td>' + stock.id + '</td>' +
+                            '<td>' + stock.Tickers + '</td>' +
+                            '<td>' + stock.MachinePrediction + '</td>' +
+                            '<td>' + stock.RealTimePrice + '</td>' +
+                            '<td class="d-flex justify-content-center align-items-center">' +
+                            '<div class="form-check form-check-flat form-check form-check-success">' +
+                            '<label class="form-check-label">' +
+                            '<input type="checkbox" class="form-check-input">' +
+                            '</label>' +
+                            '</div>' +
+                            '</td>' +
+                            '</tr>';
+                        tableBody.append(row);
+                    });
+
+                    // Display pagination links if available
+                    $('.pagination').html(response.links);
+
+                    // Add click event handler for pagination links
+                    $('.pagination a').on('click', function(e) {
+                        e.preventDefault();
+                        var page = $(this).attr('href').split('page=')[1];
+                        fetchStockData(selectedExchange, page);
+                    });
+
+                } else {
+                    // Handle error or no data case
+                    tableBody.html('<tr><td colspan="5">No data available.</td></tr>');
+                    $('.pagination').empty();
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle AJAX error
+                console.error(error);
+            }
+        });
+    }
+
+    // Initial fetch on button click
+    $('#fetchButton').on('click', function() {
+        var selectedExchange = $('#exchange_name').val();
+        if (selectedExchange) {
+            fetchStockData(selectedExchange);
+        }
+    });
+});
+
+</script>
 
   </body>
 </html>

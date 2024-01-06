@@ -112,7 +112,7 @@ class AdminController extends Controller
         $data=User::where('role', 1)->get();
         $perPage = 10;
         $currentPage = $request->input('page', 1);
-        $offset = ($currentPage - 1) * $perPage;        
+        $offset = ($currentPage - 1) * $perPage;
         return view('admin.list-pre-user')->with(['admin'=>$admin, 'datas'=>$data, 'currentPage'=>$currentPage]);
     }
 
@@ -130,7 +130,7 @@ class AdminController extends Controller
         $data=User::where('role', 3)->get();
         $perPage = 10;
         $currentPage = $request->input('page', 1);
-        $offset = ($currentPage - 1) * $perPage;        
+        $offset = ($currentPage - 1) * $perPage;
         return view('admin.list-tr-user')->with(['admin'=>$admin, 'datas'=>$data, 'currentPage'=>$currentPage]);
     }
 
@@ -139,9 +139,9 @@ class AdminController extends Controller
         $user=User::where('online_list', null)->get();
         $perPage = 10;
         $currentPage = $request->input('page', 1);
-        $offset = ($currentPage - 1) * $perPage;        
+        $offset = ($currentPage - 1) * $perPage;
         return view('admin.list-online-user')->with(['admin'=>$admin, 'users'=>$user, 'currentPage'=>$currentPage]);
-        
+
     }
 
     public function userView($user_id){
@@ -212,7 +212,7 @@ class AdminController extends Controller
     }
 
     public function passwordUpdate(Request $request){
-        $admin = Auth::guard('admin')->user(); 
+        $admin = Auth::guard('admin')->user();
         $oldPassword = $request->input('old_password');
         $newPassword = $request->input('new_password');
         $confirmPassword = $request->input('confirm_password');
@@ -241,11 +241,11 @@ class AdminController extends Controller
     {
         $selectedExchange = $request->input('exchange_name');
         $tables = DB::connection('exchange')->getDoctrineSchemaManager()->listTableNames();
-    
+
         if ($selectedExchange && in_array($selectedExchange, $tables)) {
-            $stockData = DB::connection('exchange')->table($selectedExchange)->paginate(30);
-    
-            return response()->json(['stockData' => $stockData]);
+            $stockData = DB::connection('exchange')->table($selectedExchange)->paginate(5);
+
+            return response()->json(['stockData' => $stockData,'links' => $stockData->links()->toHtml(),]);
         } else {
             return response()->json(['error' => 'Invalid or no exchange selected.'], 400);
         }
@@ -269,7 +269,7 @@ class AdminController extends Controller
         )->post('http://127.0.0.1:8888/api/csv-upload', [
             'table_name' => $selectedTable,
         ]);
-        return $response->json(); 
+        return $response->json();
     }
 
     public function createTableForm(){
